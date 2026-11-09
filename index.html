@@ -1,689 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BE Techie Consulting | Purpose-Built Software for Complex Enterprise Challenges</title>
-    <meta name="description" content="Custom software development and technical program management for organizations outgrowing their infrastructure. Led by veterans from Google, Microsoft, and KPMG.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a2332;
-            --accent: #FFC107;
-            --text: #2c3e50;
-            --text-light: #6b7280;
-            --bg: #ffffff;
-            --bg-alt: #f8fafc;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            height: 45px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .cta-button:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .hero-visual {
-            position: relative;
-            height: 500px;
-        }
-
-        .cube-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            perspective: 1000px;
-        }
-
-        .cube {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent) 0%, #ff9800 100%);
-            border-radius: 8px;
-            animation: float 6s ease-in-out infinite;
-            opacity: 0.9;
-            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
-        }
-
-        .cube:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
-        .cube:nth-child(2) { top: 30%; left: 60%; animation-delay: 1s; }
-        .cube:nth-child(3) { top: 60%; left: 15%; animation-delay: 2s; }
-        .cube:nth-child(4) { top: 70%; left: 70%; animation-delay: 1.5s; }
-        .cube:nth-child(5) { top: 45%; left: 40%; animation-delay: 0.5s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .problem-item {
-            padding: 2rem;
-            background: var(--bg-alt);
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .problem-item h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-
-        .problem-item p {
-            color: var(--text-light);
-        }
-
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            padding: 2.5rem;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-        }
-
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .service-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .service-card h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        /* Team Section */
-        .team-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            color: var(--text-light);
-            font-size: 1.125rem;
-        }
-
-        .credentials {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            margin: 3rem 0 4rem;
-            flex-wrap: wrap;
-            opacity: 0.6;
-        }
-
-        .credentials span {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .team-member {
-            text-align: center;
-            padding: 2rem;
-            background: var(--bg-alt);
-            border-radius: 16px;
-            transition: all 0.3s;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-
-        .team-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, #ff9800 100%);
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            font-weight: bold;
-        }
-
-        .team-member h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-member .title {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .team-member p {
-            color: var(--text-light);
-            text-align: left;
-            line-height: 1.8;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-container h2 {
-            margin-bottom: 1rem;
-        }
-
-        .contact-container .subtitle {
-            color: var(--text-light);
-            font-size: 1.125rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-card {
-            padding: 3rem;
-            background: var(--bg-alt);
-            border-radius: 16px;
-            text-align: center;
-        }
-
-        .contact-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .contact-card p {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .contact-form textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .contact-form button {
-            background: var(--primary);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .contact-form button:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            height: 45px;
-            width: auto;
-            margin-bottom: 1rem;
-        }
-
-        .footer-content p {
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 1rem;
-        }
-
-        .footer-email {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .footer-email:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                margin: 0 auto 2rem;
-            }
-
-            .hero-visual {
-                height: 300px;
-            }
-
-            .problem-grid,
-            .services-grid,
-            .team-grid,
-            .contact-options {
-                grid-template-columns: 1fr;
-            }
-
-            .credentials {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BE Techie Consulting | Custom Software Development & Program Management</title>
+<meta name="description" content="Custom software development, program, project and product management, and change management for enterprises and growing companies. Led by veterans of Google, Microsoft and KPMG.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#1a2332;--primary-2:#243247;--accent:#FFC107;--accent-deep:#b88700;
+  --text:#2c3e50;--text-light:#5b6574;--bg:#fff;--bg-alt:#f5f7fa;--line:#e3e8ef;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--sans);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
+h1,h2,h3{font-family:var(--serif);color:var(--primary);font-weight:600;line-height:1.15}
+
+/* Nav */
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);z-index:1000;border-bottom:1px solid var(--line)}
+.nav-container{display:flex;justify-content:space-between;align-items:center;height:76px}
+.logo{height:44px;width:auto}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--primary);transition:color .2s}
+.nav-links a:hover{color:var(--accent-deep)}
+.nav-links .nav-cta{background:var(--primary);color:#fff;padding:.65rem 1.3rem;border-radius:6px}
+.nav-links .nav-cta:hover{background:var(--accent);color:var(--primary)}
+.mobile-menu{display:none;background:none;border:0;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px}
+.mobile-menu span{width:25px;height:3px;background:var(--primary)}
+
+/* Buttons */
+.btn{display:inline-block;padding:1rem 2rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:1rem;border:2px solid transparent;transition:all .2s;cursor:pointer;font-family:inherit}
+.btn-accent{background:var(--accent);color:var(--primary)}
+.btn-accent:hover{background:#ffd54f;transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-dark{background:var(--primary);color:#fff}
+.btn-dark:hover{background:var(--accent);color:var(--primary)}
+
+/* Hero */
+.hero{background:var(--primary);color:#fff;padding:calc(76px + 6rem) 0 6rem;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-12%;top:-30%;width:70%;height:160%;background:radial-gradient(closest-side,rgba(255,193,7,.12),transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:4rem;align-items:center;position:relative}
+.hero h1{font-size:3.7rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-.015em}
+.hero p.lead{font-size:1.2rem;color:rgba(255,255,255,.8);max-width:36rem;margin-bottom:2.5rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-panel{background:var(--primary-2);border:1px solid rgba(255,255,255,.1);border-top:4px solid var(--accent);border-radius:10px;padding:2.2rem}
+.hero-panel h2{font-size:1.2rem;color:#fff;margin-bottom:1.4rem;font-family:var(--sans);font-weight:600}
+.hero-panel ul{list-style:none}
+.hero-panel li{padding:.85rem 0;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:.9rem;color:rgba(255,255,255,.88);font-size:.98rem}
+.hero-panel li:first-child{border-top:0;padding-top:0}
+.hero-panel li::before{content:"";flex:none;width:8px;height:8px;margin-top:.55rem;background:var(--accent);border-radius:2px}
+
+/* Proof strip */
+.proof{background:var(--bg-alt);border-bottom:1px solid var(--line)}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2.6rem 0}
+.proof-item strong{display:block;font-family:var(--serif);font-size:2.4rem;color:var(--primary);line-height:1}
+.proof-item span{display:block;margin-top:.5rem;font-size:.95rem;color:var(--text-light)}
+
+/* Sections */
+section{padding:6rem 0}
+.alt{background:var(--bg-alt)}
+.dark{background:var(--primary);color:#fff}
+.section-head{max-width:46rem;margin-bottom:3.5rem}
+.section-head h2{font-size:2.6rem;margin-bottom:1rem;letter-spacing:-.01em}
+.section-head p{font-size:1.1rem;color:var(--text-light)}
+.dark .section-head h2{color:#fff}
+.dark .section-head p{color:rgba(255,255,255,.75)}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.service{background:#fff;border:1px solid var(--line);border-top:4px solid var(--primary);padding:2.2rem;border-radius:6px;transition:border-color .2s,box-shadow .2s}
+.service:hover{border-top-color:var(--accent);box-shadow:0 14px 30px rgba(26,35,50,.1)}
+.service svg{width:48px;height:48px;margin-bottom:1.3rem}
+.service h3{font-size:1.45rem;margin-bottom:.8rem}
+.service p{color:var(--text-light);font-size:.98rem;margin-bottom:1rem}
+.service ul{list-style:none;font-size:.92rem;color:var(--text)}
+.service li{padding-left:1.1rem;position:relative;margin-top:.35rem}
+.service li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;background:var(--accent);border-radius:1px}
+
+/* Challenges */
+.challenge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem 3rem}
+.challenge{padding:1.4rem 0 1.4rem 1.5rem;border-left:4px solid var(--accent)}
+.challenge h3{font-size:1.25rem;margin-bottom:.4rem}
+.challenge p{color:var(--text-light);font-size:.98rem}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:s}
+.step{padding:1.8rem;border:1px solid rgba(255,255,255,.14);border-radius:6px;background:var(--primary-2)}
+.step::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--primary);font-weight:600;margin-bottom:1.1rem}
+.step h3{color:#fff;font-size:1.25rem;margin-bottom:.6rem}
+.step p{color:rgba(255,255,255,.75);font-size:.95rem}
+
+/* Engagement + industries */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.two-col h2{font-size:2rem;margin-bottom:1.5rem}
+.list-rows{list-style:none}
+.list-rows li{padding:1.1rem 0;border-top:1px solid var(--line)}
+.list-rows li:last-child{border-bottom:1px solid var(--line)}
+.list-rows strong{display:block;color:var(--primary);font-size:1.02rem}
+.list-rows span{color:var(--text-light);font-size:.95rem}
+
+/* Team */
+.leaders{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.leader{background:#fff;border:1px solid var(--line);border-radius:8px;padding:2.6rem;display:flex;flex-direction:column}
+.leader-top{display:flex;gap:1.4rem;align-items:center;margin-bottom:1.5rem}
+.avatar{flex:none;width:92px;height:92px;border-radius:50%;background:var(--primary);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2rem;font-weight:600;border:4px solid var(--accent)}
+.leader h3{font-size:1.7rem}
+.leader .role{color:var(--accent-deep);font-weight:600;font-size:.98rem;margin-top:.2rem}
+.leader p{color:var(--text-light);margin-bottom:1.3rem}
+.leader ul{list-style:none;margin-top:auto;border-top:1px solid var(--line);padding-top:1.2rem}
+.leader li{padding-left:1.1rem;position:relative;font-size:.95rem;margin-top:.5rem}
+.leader li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;background:var(--accent);border-radius:1px}
+.brands{display:flex;gap:1rem 3rem;flex-wrap:wrap;align-items:baseline;margin-bottom:3rem}
+.brands em{font-style:normal;color:var(--text-light);font-size:.95rem}
+.brands span{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--primary)}
+
+/* CTA band */
+.cta-band{background:var(--accent);padding:4.5rem 0;text-align:center}
+.cta-band h2{font-size:2.3rem;margin-bottom:.8rem}
+.cta-band p{max-width:38rem;margin:0 auto 2rem;color:var(--primary);font-size:1.1rem}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+.contact-grid h2{font-size:2.4rem;margin-bottom:1rem}
+.contact-grid p{color:var(--text-light);margin-bottom:1.5rem}
+.contact-grid .direct{margin-top:2rem;font-size:.98rem}
+.contact-grid .direct a{color:var(--accent-deep);font-weight:600}
+form{background:var(--bg-alt);padding:2.4rem;border-radius:8px;border:1px solid var(--line);display:flex;flex-direction:column;gap:1rem}
+label{font-weight:500;font-size:.9rem;color:var(--primary)}
+input,select,textarea{width:100%;padding:.9rem 1rem;border:1px solid #cbd3de;border-radius:6px;font:inherit;background:#fff;color:var(--text);margin-top:.35rem}
+textarea{min-height:130px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* Footer */
+footer{background:var(--primary);color:#fff;padding:3.5rem 0 2rem}
+.footer-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.14)}
+.footer-logo{height:44px;width:auto;margin-bottom:1rem}
+footer p{color:rgba(255,255,255,.75);font-size:.95rem;max-width:22rem}
+footer ul{list-style:none;display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+footer ul a{text-decoration:none;color:rgba(255,255,255,.85)}
+footer ul a:hover,.footer-email{color:var(--accent)}
+.footer-bottom{padding-top:1.5rem;font-size:.88rem;color:rgba(255,255,255,.6);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:960px){
+  .hero-grid,.two-col,.leaders,.contact-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .proof-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .wrap{padding:0 1.25rem}
+  .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:1rem 1.25rem 1.5rem;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .nav-links li a{display:block;padding:.8rem 0}
+  .nav-links .nav-cta{text-align:center;margin-top:.5rem}
+  .mobile-menu{display:flex}
+  .hero{padding-top:calc(76px + 3.5rem)}
+  .hero h1{font-size:2.5rem}
+  section{padding:4rem 0}
+  .section-head h2,.contact-grid h2{font-size:2rem}
+  .services-grid,.steps,.challenge-grid,.row{grid-template-columns:1fr}
+  .leader{padding:1.8rem}
+  .leader-top{flex-direction:column;align-items:flex-start}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <img src="logo.png" alt="BE Techie Consulting" class="logo">
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Purpose-Built Software for Complex Enterprise Challenges</h1>
-                <p>Custom development and program management for organizations outgrowing their infrastructure</p>
-                <a href="https://calendly.com/betechieconsulting" class="cta-button" target="_blank">Schedule a Consultation</a>
-            </div>
-            <div class="hero-visual">
-                <div class="cube-container">
-                    <div class="cube"></div>
-                    <div class="cube"></div>
-                    <div class="cube"></div>
-                    <div class="cube"></div>
-                    <div class="cube"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+<nav aria-label="Main">
+  <div class="wrap nav-container">
+    <a href="#home" aria-label="BE Techie Consulting home"><img src="logo.png" alt="BE Techie Consulting" class="logo"></a>
+    <button class="mobile-menu" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Consultation</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <!-- Problem Section -->
-    <section>
-        <h2>When Off-the-Shelf Fails and Stakes Are High</h2>
-        <div class="problem-grid">
-            <div class="problem-item">
-                <h3>Failed Implementations</h3>
-                <p>Previous projects stalled or delivered suboptimal results, costing valuable time and capital without achieving business objectives.</p>
-            </div>
-            <div class="problem-item">
-                <h3>Technical Debt</h3>
-                <p>Legacy systems and accumulated shortcuts create barriers to innovation, slowing your ability to compete and adapt to market changes.</p>
-            </div>
-            <div class="problem-item">
-                <h3>Capacity Constraints</h3>
-                <p>Current infrastructure cannot support operational demands or growth trajectory, limiting business performance and scalability.</p>
-            </div>
-        </div>
-    </section>
+<header class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Custom software, delivered with executive-level program leadership.</h1>
+      <p class="lead">BE Techie Consulting builds mission-critical software and leads the projects, products, programs and change that make it succeed. For enterprises and growing companies that can't afford another stalled initiative.</p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/betechieconsulting" target="_blank" rel="noopener" class="btn btn-accent">Schedule a Consultation</a>
+        <a href="#services" class="btn btn-ghost">Explore Our Services</a>
+      </div>
+    </div>
+    <aside class="hero-panel" aria-label="What we deliver">
+      <h2>One accountable partner, from strategy to launch</h2>
+      <ul>
+        <li>Custom software engineered to your workflows and scale</li>
+        <li>Program, project and product management that keeps delivery on track</li>
+        <li>Change management that drives real adoption</li>
+        <li>Legacy modernization with minimal business disruption</li>
+      </ul>
+    </aside>
+  </div>
+</header>
 
-    <!-- Services Section -->
-    <section id="services">
-        <h2>Strategic Development Built Around Your Business</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="8" y="8" width="48" height="48" rx="4" stroke="#1a2332" stroke-width="2.5"/>
-                        <path d="M20 28L28 36L44 20" stroke="#FFC107" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="32" cy="32" r="3" fill="#FFC107"/>
-                        <line x1="16" y1="16" x2="22" y2="22" stroke="#1a2332" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="48" y1="16" x2="42" y2="22" stroke="#1a2332" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <h3>Custom Software Development</h3>
-                <p>Purpose-built applications architected for your specific workflows, business logic, and scale requirements. We deliver scalable, maintainable solutions with comprehensive documentation and knowledge transfer.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="32" cy="32" r="24" stroke="#1a2332" stroke-width="2.5"/>
-                        <circle cx="32" cy="32" r="16" stroke="#1a2332" stroke-width="2"/>
-                        <circle cx="32" cy="32" r="4" fill="#FFC107"/>
-                        <line x1="32" y1="8" x2="32" y2="20" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/>
-                        <line x1="32" y1="44" x2="32" y2="56" stroke="#1a2332" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="8" y1="32" x2="20" y2="32" stroke="#1a2332" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="44" y1="32" x2="56" y2="32" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <h3>Technical Program Management</h3>
-                <p>End-to-end delivery with clarity, accountability, and precision. We coordinate multi-team efforts, manage stakeholder alignment, mitigate risks, and ensure on-time delivery of complex technical initiatives.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 52L12 20L28 12L44 20L44 36" stroke="#1a2332" stroke-width="2.5" stroke-linecap="round"/>
-                        <path d="M28 12L28 52" stroke="#1a2332" stroke-width="2"/>
-                        <path d="M12 28L28 20L44 28" stroke="#1a2332" stroke-width="2"/>
-                        <path d="M36 40L44 48L60 32" stroke="#FFC107" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="52" cy="40" r="2" fill="#FFC107"/>
-                    </svg>
-                </div>
-                <h3>Legacy Modernization</h3>
-                <p>Transform technical debt into competitive advantage through phased migration strategies. We modernize critical systems with minimal disruption while improving performance and reducing operational costs.</p>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="#contact" class="cta-button">Discuss Your Challenge</a>
-        </div>
-    </section>
+<div class="proof">
+  <div class="wrap proof-grid">
+    <div class="proof-item"><strong>20+</strong><span>years building enterprise software</span></div>
+    <div class="proof-item"><strong>12+</strong><span>years leading high-stakes technology programs</span></div>
+    <div class="proof-item"><strong>Fortune 500</strong><span>clients advised on complex transformations</span></div>
+    <div class="proof-item"><strong>Google · Microsoft · KPMG</strong><span>where our leaders honed their craft</span></div>
+  </div>
+</div>
 
-    <!-- Team Section -->
-    <section id="team">
-        <h2>Built by Experts Who've Solved These Problems Before</h2>
-        <p class="team-intro">We've managed billion-dollar programs, architected systems serving millions of users, and navigated the technical complexity of global enterprises.</p>
-        
-        <div class="credentials">
-            <span>Microsoft</span>
-            <span>Google</span>
-            <span>KPMG</span>
-            <span>Fortune 500</span>
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Build it right. Deliver it on time. Make it stick.</h2>
+      <p>Technology succeeds when engineering, delivery discipline and people alignment move together. We provide all three under one roof.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="8" width="48" height="48" rx="4" stroke="#1a2332" stroke-width="2.5"/><path d="M20 28L28 36L44 20" stroke="#FFC107" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="3" fill="#FFC107"/></svg>
+        <h3>Custom Software Development</h3>
+        <p>Purpose-built applications architected for your business logic, data and growth, with full documentation and knowledge transfer.</p>
+        <ul><li>.NET and enterprise application development</li><li>Integrations, APIs and data platforms</li><li>Clean, maintainable, secure code</li></ul>
+      </article>
+      <article class="service">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="24" stroke="#1a2332" stroke-width="2.5"/><circle cx="32" cy="32" r="16" stroke="#1a2332" stroke-width="2"/><circle cx="32" cy="32" r="4" fill="#FFC107"/><line x1="32" y1="8" x2="32" y2="20" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/><line x1="44" y1="32" x2="56" y2="32" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <h3>Program & Project Management</h3>
+        <p>Multi-team technical initiatives led with clarity and accountability, from governance and roadmaps to risk and stakeholder alignment.</p>
+        <ul><li>Program and portfolio leadership</li><li>Project recovery for stalled initiatives</li><li>Vendor and cross-team coordination</li></ul>
+      </article>
+      <article class="service">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M10 50V30L24 22L38 30V50" stroke="#1a2332" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 22V50" stroke="#1a2332" stroke-width="2"/><path d="M34 20L42 12L54 24" stroke="#FFC107" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="6" stroke="#FFC107" stroke-width="3"/></svg>
+        <h3>Product Management</h3>
+        <p>Strategy-to-launch product leadership that turns business goals and user needs into prioritized roadmaps and shipped value.</p>
+        <ul><li>Product strategy and roadmapping</li><li>Requirements and backlog ownership</li><li>User experience and design guidance</li></ul>
+      </article>
+      <article class="service">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="18" cy="32" r="8" stroke="#1a2332" stroke-width="2.5"/><circle cx="46" cy="18" r="8" stroke="#FFC107" stroke-width="3"/><circle cx="46" cy="46" r="8" stroke="#1a2332" stroke-width="2.5"/><path d="M25 28L39 21M25 36L39 43" stroke="#1a2332" stroke-width="2"/></svg>
+        <h3>Change Management</h3>
+        <p>New technology only pays off when people use it. We plan and execute the communication, training and adoption work that makes change last.</p>
+        <ul><li>Stakeholder and impact analysis</li><li>Training, communications and rollout</li><li>Adoption tracking and reinforcement</li></ul>
+      </article>
+      <article class="service">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M12 52V20L28 12L44 20V36" stroke="#1a2332" stroke-width="2.5" stroke-linecap="round"/><path d="M28 12V52" stroke="#1a2332" stroke-width="2"/><path d="M36 40L44 48L60 32" stroke="#FFC107" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Legacy Modernization</h3>
+        <p>Turn technical debt into competitive advantage through phased migration that protects operations while improving performance and cost.</p>
+        <ul><li>Architecture and risk assessment</li><li>Phased migration and re-platforming</li><li>Performance and cost optimization</li></ul>
+      </article>
+      <article class="service">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="34" rx="3" stroke="#1a2332" stroke-width="2.5"/><path d="M8 24H56" stroke="#1a2332" stroke-width="2"/><circle cx="16" cy="18" r="2" fill="#FFC107"/><path d="M22 54H42M32 46V54" stroke="#1a2332" stroke-width="2.5" stroke-linecap="round"/><path d="M18 38L26 32L32 36L44 30" stroke="#FFC107" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>MarTech & Digital Platforms</h3>
+        <p>Enterprise marketing technology and web platform delivery, built around intuitive user experiences and measurable results.</p>
+        <ul><li>MarTech implementation and integration</li><li>Web design and UX</li><li>Platform operations and optimization</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="challenges">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>When off-the-shelf falls short and the stakes are high</h2>
+      <p>Organizations call us when the cost of getting it wrong is bigger than the cost of getting expert help.</p>
+    </div>
+    <div class="challenge-grid">
+      <div class="challenge"><h3>A stalled or failed implementation</h3><p>We assess what went wrong, reset the plan and governance, and bring the program back on course.</p></div>
+      <div class="challenge"><h3>Legacy systems holding you back</h3><p>We modernize in phases so critical operations keep running while innovation speeds up.</p></div>
+      <div class="challenge"><h3>Infrastructure that can't scale</h3><p>We design and build systems for the volume, complexity and growth you are heading toward.</p></div>
+      <div class="challenge"><h3>Big change, unready teams</h3><p>We pair delivery with change management so new platforms are adopted, not just launched.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>A disciplined path from first call to lasting results</h2>
+      <p>Every engagement follows a clear, transparent structure, scaled to the size of your organization and the complexity of the work.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Discover</h3><p>We learn your landscape, constraints, stakeholders and objectives before recommending anything.</p></div>
+      <div class="step"><h3>Plan</h3><p>Architecture, roadmap, governance, risks and success measures are agreed upfront.</p></div>
+      <div class="step"><h3>Deliver</h3><p>Iterative build and delivery with regular reporting, so you always know where things stand.</p></div>
+      <div class="step"><h3>Transition</h3><p>Documentation, training and knowledge transfer leave your team confident and self-sufficient.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two-col">
+    <div>
+      <h2>Engagement models that fit your organization</h2>
+      <ul class="list-rows">
+        <li><strong>Project-based delivery</strong><span>Defined scope, timeline and outcomes for a specific build or initiative.</span></li>
+        <li><strong>Embedded program leadership</strong><span>Senior program, project or product leaders working inside your team.</span></li>
+        <li><strong>Advisory and recovery</strong><span>Short, focused engagements to assess, de-risk or rescue critical programs.</span></li>
+        <li><strong>Ongoing partnership</strong><span>Continued development, support and optimization as your needs evolve.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Experience across regulated, data-heavy industries</h2>
+      <ul class="list-rows">
+        <li><strong>Healthcare</strong><span>Complex business logic and sensitive data handled with care.</span></li>
+        <li><strong>Financial services</strong><span>Reliable, high-performance applications for demanding operations.</span></li>
+        <li><strong>Enterprise technology</strong><span>Platform delivery and operations at global scale.</span></li>
+        <li><strong>Marketing technology</strong><span>MarTech ecosystems that connect data, content and customers.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="leadership">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Senior leaders who do the work themselves</h2>
+      <p>You work directly with our principals, who have managed large-scale programs and built systems for global enterprises.</p>
+    </div>
+    <div class="brands"><em>Experience includes</em><span>Google</span><span>Microsoft</span><span>KPMG</span><span>Fortune 500 clients</span></div>
+    <div class="leaders">
+      <article class="leader">
+        <div class="leader-top">
+          <div class="avatar" aria-hidden="true">BT</div>
+          <div><h3>Brooke Thomas</h3><div class="role">Chief Executive Officer</div></div>
         </div>
-
-        <div class="team-grid">
-            <div class="team-member">
-                <div class="team-photo">BT</div>
-                <h3>Brooke Thomas</h3>
-                <p class="title">CEO</p>
-                <p>Former Technical Program Manager at Google and Microsoft, and User Experience and Technology Operations Consultant at KPMG, where she led enterprise-scale platform delivery and provided strategic counsel to Fortune 500 clients on complex technical transformations. Brings 12+ years managing high-stakes MarTech implementations, with expertise spanning program management, consulting, web design, and user experience. Known for rescuing stalled programs and architecting scalable, intuitive solutions that deliver measurable business impact.</p>
-            </div>
-            <div class="team-member">
-                <div class="team-photo">NM</div>
-                <h3>Nazim MacBeth</h3>
-                <p class="title">.NET Application Developer</p>
-                <p>20+ years of developing intricate software solutions for healthcare, financial services, and enterprise technology sectors. Expert in building robust, high-performance applications that handle complex business logic and large-scale data operations. Known for writing clean, maintainable code that reduces technical debt and accelerates delivery timelines.</p>
-            </div>
-            <div class="team-member">
-                <div class="team-photo">JK</div>
-                <h3>Jackie Killings</h3>
-                <p class="title">Innovation Strategist</p>
-                <p>20+ years in Chemical Engineering, Product Development, and AI, driving $100M+ in growth for Fortune 500 organizations. Combines deep technical expertise with business strategy to identify market opportunities and translate them into executable roadmaps. Specializes in leveraging emerging technologies to solve complex operational challenges and create competitive advantages.</p>
-            </div>
+        <p>Former Technical Program Manager at Google and Microsoft, and User Experience and Technology Operations Consultant at KPMG. Brooke led enterprise-scale platform delivery and advised Fortune 500 clients through complex technical transformations. With 12+ years managing high-stakes MarTech implementations, she is known for rescuing stalled programs and delivering scalable, intuitive solutions with measurable business impact.</p>
+        <ul><li>Program, project and product management</li><li>Change management and stakeholder alignment</li><li>MarTech, web design and user experience</li></ul>
+      </article>
+      <article class="leader">
+        <div class="leader-top">
+          <div class="avatar" aria-hidden="true">NM</div>
+          <div><h3>Nazim MacBeth</h3><div class="role">Principal .NET Architect & Developer</div></div>
         </div>
-    </section>
+        <p>Nazim brings 20+ years of building intricate software for healthcare, financial services and enterprise technology. He specializes in robust, high-performance applications that handle complex business logic and large-scale data operations, and is known for clean, maintainable code that reduces technical debt and accelerates delivery.</p>
+        <ul><li>.NET application architecture and development</li><li>Large-scale data and business logic systems</li><li>Technical debt reduction and modernization</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="contact-container">
-            <h2>Let's Talk About Your Challenge</h2>
-            <p class="subtitle">We start every engagement with a consultation to understand your technical landscape, constraints, and objectives.</p>
-            
-            <div class="contact-options">
-                <div class="contact-card">
-                    <h3>Schedule a Call</h3>
-                    <p>Book a 30-minute consultation to discuss your needs</p>
-                    <a href="https://calendly.com/betechieconsulting" class="cta-button" target="_blank">Book Now</a>
-                </div>
-                <div class="contact-card">
-                    <h3>Send a Message</h3>
-                    <form class="contact-form" action="mailto:betechieconsulting@gmail.com" method="POST" enctype="text/plain">
-                        <input type="text" name="name" placeholder="Name" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="text" name="company" placeholder="Company" required>
-                        <textarea name="message" placeholder="Tell us about your challenge" required></textarea>
-                        <button type="submit">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Ready to move your initiative forward?</h2>
+    <p>Start with a 30-minute consultation. We'll listen, ask the hard questions and tell you plainly how we can help.</p>
+    <a href="https://calendly.com/betechieconsulting" target="_blank" rel="noopener" class="btn btn-dark">Schedule a Consultation</a>
+  </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <img src="logo.png" alt="BE Techie Consulting" class="footer-logo">
-            <p>&copy; 2025 BE Techie Consulting LLC. All rights reserved.</p>
-            <p>Contact: <a href="mailto:betechieconsulting@gmail.com" class="footer-email">betechieconsulting@gmail.com</a></p>
-        </div>
-    </footer>
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Tell us about your challenge</h2>
+      <p>Share a few details and we'll respond promptly. Every engagement begins with a conversation about your technical landscape, constraints and goals.</p>
+      <p class="direct">Prefer email? <a href="mailto:betechieconsulting@gmail.com">betechieconsulting@gmail.com</a></p>
+    </div>
+    <form action="mailto:betechieconsulting@gmail.com" method="POST" enctype="text/plain">
+      <div class="row">
+        <div><label for="name">Name</label><input id="name" type="text" name="name" required></div>
+        <div><label for="email">Work email</label><input id="email" type="email" name="email" required></div>
+      </div>
+      <div class="row">
+        <div><label for="company">Company</label><input id="company" type="text" name="company" required></div>
+        <div><label for="need">I'm interested in</label>
+          <select id="need" name="interest">
+            <option>Custom software development</option>
+            <option>Program or project management</option>
+            <option>Product management</option>
+            <option>Change management</option>
+            <option>Legacy modernization</option>
+            <option>Not sure yet</option>
+          </select></div>
+      </div>
+      <div><label for="message">How can we help?</label><textarea id="message" name="message" required></textarea></div>
+      <button type="submit" class="btn btn-dark">Send Message</button>
+    </form>
+  </div>
+</section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <img src="logo.png" alt="BE Techie Consulting" class="footer-logo">
+        <p>Custom software development and program, project, product and change management.</p>
+      </div>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="mailto:betechieconsulting@gmail.com" class="footer-email">betechieconsulting@gmail.com</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 BE Techie Consulting LLC. All rights reserved.</span></div>
+  </div>
+</footer>
 
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-    </script>
+<script>
+const btn=document.querySelector('.mobile-menu'),links=document.querySelector('.nav-links');
+btn.addEventListener('click',()=>{const o=links.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');btn.setAttribute('aria-expanded','false')}));
+</script>
 </body>
 </html>
